@@ -13,7 +13,7 @@
 # Amount of resources to set
 set $scrap = 9999999
 set $fuel = 999
-set $drone = 99
+set $drones = 999
 set $missiles = 999
 
 # Game state address and offsets
@@ -25,12 +25,14 @@ set $fuel_offset = 0x700
 set $other_offset = 0x88
 set $missile_offset = 0x2b8
 
+set $drone_offset_1 = 0x90
+set $drone_offset_2 = 0x290
+
 # Set scrap and fuel
 set *(*($game_state_addr) + $scrap_offset) = $scrap
 set *(*($game_state_addr) + $fuel_offset) = $fuel
-
-# Missiles have an additional offset to dereference
 set *(*(*($game_state_addr) + $other_offset) + $missile_offset) = $missiles
+set *(*(*($game_state_addr) + $drone_offset_1) + $drone_offset_2) = $drones
 
 # Quit the debugger
 detach
