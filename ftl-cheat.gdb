@@ -19,14 +19,14 @@ set $missiles = 999
 # Game state address and offsets
 set $game_state_addr = 0x8e3500
 set $scrap_offset = 0x760
-set $drone_offset = 0x290
+set $drone_offset = 0xbf0
 set $fuel_offset = 0x700
 
 set $other_offset = 0x88
 set $missile_offset = 0x2b8
 
-set $drone_offset_1 = 0x90
-set $drone_offset_2 = 0x290
+#set $drone_offset_1 = 0x90
+#set $drone_offset_2 = 0x290
 
 # Print the game state addr (useful for more debugging)
 printf "-------------------------------------\n"
@@ -43,8 +43,9 @@ set *(*($game_state_addr) + $fuel_offset) = $fuel
 printf "Missiles value is currently:\t\t %d\n", *(*(*($game_state_addr) + $other_offset) + $missile_offset) 
 set *(*(*($game_state_addr) + $other_offset) + $missile_offset) = $missiles
 
-printf "Drones value is currently:\t\t %d\n", *(*(*($game_state_addr) + $drone_offset_1) + $drone_offset_2) 
-set *(*(*($game_state_addr) + $drone_offset_1) + $drone_offset_2) = $drones
+printf "Drones value is currently:\t\t %d\n", *(*($game_state_addr) + $drone_offset) 
+ 
+set *(*($game_state_addr) + $drone_offset) = $drones
 
 # Quit the debugger
 detach
