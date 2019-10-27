@@ -9,7 +9,6 @@
 #      sudo gdb -p $(ps -ef|grep FTL.amd64 | head -n 1 | awk '{print $2}') --command=ftl-cheat.gdb
 #
 
-
 # Amount of resources to set
 set $scrap    = 9999999
 set $fuel     = 999
@@ -60,8 +59,6 @@ else
 end
 printf "Drones value (0x%08x) is currently:  %d\n", $drone_addr, *$drone_addr
 set *$drone_addr = $drones
-
-
 
 # Quit the debugger
 detach
