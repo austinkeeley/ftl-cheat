@@ -11,9 +11,9 @@
 
 
 # Amount of resources to set
-set $scrap = 9999999
-set $fuel = 999
-set $drones = 999
+set $scrap    = 9999999
+set $fuel     = 999
+set $drones   = 999
 set $missiles = 999
 
 # Game state address and offsets
@@ -28,10 +28,22 @@ set $missile_offset = 0x2b8
 set $drone_offset_1 = 0x90
 set $drone_offset_2 = 0x290
 
-# Set scrap and fuel
+# Print the game state addr (useful for more debugging)
+printf "-------------------------------------\n"
+printf "Game state address: 0x%08x\n", *$game_state_addr
+printf "-------------------------------------\n"
+
+# Set resources
+printf "Scrap value is currently:\t\t %d\n", *(*($game_state_addr) + $scrap_offset)
 set *(*($game_state_addr) + $scrap_offset) = $scrap
+
+printf "Fuel value is currently:\t\t %d\n", *(*($game_state_addr) + $fuel_offset)
 set *(*($game_state_addr) + $fuel_offset) = $fuel
+
+printf "Missiles value is currently:\t\t %d\n", *(*(*($game_state_addr) + $other_offset) + $missile_offset) 
 set *(*(*($game_state_addr) + $other_offset) + $missile_offset) = $missiles
+
+printf "Drones value is currently:\t\t %d\n", *(*(*($game_state_addr) + $drone_offset_1) + $drone_offset_2) 
 set *(*(*($game_state_addr) + $drone_offset_1) + $drone_offset_2) = $drones
 
 # Quit the debugger
