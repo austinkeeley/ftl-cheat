@@ -20,6 +20,6 @@ fi
 echo "[*] FTL game PID is $FTL_PID"
 
 echo "[*] Attaching to process"
-gdb -p $FTL_PID --command=ftl-cheat.gdb
+gdb -p $FTL_PID --command=ftl-cheat.gdb -q
 
 echo "[*] Done"
