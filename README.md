@@ -6,6 +6,9 @@ scrap metal, 999 fuel, 999 drones, and 999 missiles.
 
 Currently only supports the amd64 version of the game. Requires FTL version 1.6.9 and gdb.
 
+See the [blog post](http://espressoninja.com/2019/10/29/reverse-engineering-ftl.html) for 
+additional information.
+
 ## To Use
 
 1. Launch FTL
